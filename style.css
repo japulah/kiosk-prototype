@@ -35,7 +35,7 @@ body.homepage {
     background-color: white;
     border: none;
     font-family: 'Lexend Deca';
-    padding-left: 50px; 
+    margin-left: 50px; 
     font-size: 18px;
     cursor: pointer;
 }
