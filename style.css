@@ -1,0 +1,85 @@
+/* HOMEPAGE */
+
+body.homepage {
+    background-color: white;
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    margin: 20px 30px 0 30px;
+}
+
+.navbar .nav-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar .nav-logo img {
+    max-width: 100%;
+    height: 90px;
+}
+
+.navbar .nav-buttons {
+    display: flex;
+    align-items: center;
+    max-height: 100px;
+}
+
+.navbar .nav-buttons button {
+    background-color: white;
+    border: none;
+    font-family: 'Lexend Deca';
+    padding-left: 50px; 
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.welcome-section h1 {
+    color: black;
+    text-align: center;
+    margin: 30px 0 0 0;
+    font-family: 'Lexend Deca';
+    font-size: 60px;
+}
+
+.welcome-section h1 span {
+    color: blue;
+}
+
+.homepage p {
+    color: black;
+    text-align: center;
+    font-family: 'Lexend Deca';
+    margin: 0;
+    font-size: 30px;
+}
+
+.start-section {
+    margin-top: 120px;
+    justify-items: center;
+}
+
+.start-section button {
+    display: block;
+    background-color: white;
+    padding: 15px;
+    font-family: 'Lexend Deca';
+    width: 400px;
+    height: 80px;
+    margin-bottom: 20px;
+    font-size: 23px;
+    border-color: blue;
+    border-radius: 5px;
+}
+
+.start-section .start-buttons button {
+    display: block;
+}
+
+/* END OF HOMEPAGE */
+
+/* --- */
