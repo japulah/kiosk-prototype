@@ -80,10 +80,8 @@ body.homepage {
     cursor: pointer;
 }
 
-.start-section .start-buttons button {
-    display: block;
+.start-section .start-buttons a {
+    text-decoration: none;
 }
 
 /* END OF HOMEPAGE */
-
-/* --- */
