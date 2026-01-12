@@ -1,0 +1,129 @@
+/* CHECK STATUS SCREEN */
+
+* {
+    font-family: 'Lexend Deca';
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    user-select: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    margin: 20px 30px 0 30px;
+}
+
+.navbar .nav-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar .nav-logo img {
+    max-width: 100%;
+    height: 90px;
+}
+
+.navbar .nav-buttons {
+    display: flex;
+    align-items: center;
+    max-height: 100px;
+    margin-right: 25px;
+}
+
+.navbar .nav-buttons button {
+    background-color: white;
+    border: none;
+    font-family: 'Lexend Deca';
+    padding-left: 50px; 
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.checkstatus-section h1 {
+    background-color: antiquewhite;
+    color: black;
+    text-align: center;
+    margin: 0;
+    font-family: 'Lexend Deca';
+    font-size: 60px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.form-container form {
+    height: 185px;
+    width: 550px;
+}
+
+.label-container, .input-container, .btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    font-size: 35px;
+}
+
+.form-container input {
+    width: 550px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    border-color: blue;
+    border-width: 1px;
+}
+
+.form-container input:focus {
+    background-color: lightcyan;
+}
+
+.form-container button[type="submit"] {
+    width: 400px;
+    height: 60px;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 20px;
+    border-color: blue;
+    border-width: 1px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.status-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+    height: 105px;
+}
+
+.status-section {
+    height: 100%;
+    width: 550px;
+}
+
+.status-section input {
+    width: 550px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    border-color: blue;
+    border-width: 1px;
+    cursor: not-allowed;
+}
+
+/* END OF CHECK STATUS SCREEN */
+
+/* --- */

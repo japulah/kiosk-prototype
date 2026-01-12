@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="success.css">
+    <link href='https://fonts.googleapis.com/css?family=Lexend Deca' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="success-confirmation">
+
+    <div class="navbar">
+        <div class="nav-logo">
+            <img src="mhs-logo.png" alt="Makati High School Logo">
+        </div>
+        <div class="nav-buttons">
+            <a href="index.html"><button>Home</button></a>
+        </div>    
+    </div>
+    
+    <div class="success-section">
+        <h1>Submission Successful!</h1>
+
+        <p>Your request has been successfully submitted.</p>
+    </div>
+    
+    <div class="refno-container">
+        <div class="refno-section">
+            <div class="label-container">
+                <label for="">Request Reference Number:</label>
+            </div>
+
+            <div class="input-container">
+                <input type="number" placeholder="####" disabled>
+            </div>
+        </div>
+    </div>
+
+    <p class="note">Take a picture or write this down.</p>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "index.html";
+        }, 30000); // 1000 milliseconds = 1 second
+    </script>
+
+</body>
+</html>
