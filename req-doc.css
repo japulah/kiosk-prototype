@@ -1,10 +1,10 @@
-/* HOMEPAGE */
+/* REQUEST A DOCUMENT SCREEN */
 
 * {
     font-family: 'Lexend Deca';
 }
 
-body.homepage {
+body.req-doc {
     background-color: white;
     margin: 0;
     user-select: none;
@@ -49,30 +49,43 @@ body.homepage {
     text-align: center;
     margin: 0;
     font-family: 'Lexend Deca';
-    font-size: 50px;
+    font-size: 60px;
 }
 
 .request-section h1 span {
     color: blue;
 }
 
-.form-section {
+body.req-doc form {
+    padding: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .form-section .input-card {
     display: block;
-    width: 300px;
-    height: 80px;
-    background-color: lime;
+    width: 550px;
+    max-width: 550px;
+    height: 120px;
     margin: 20px;
+    font-size: 40px;
+}
+
+.input-card label {
+    margin: 0;
 }
 
 .input-card input {
-    width: 300px;
-    height: 40px;
+    width: 540px;
+    height: 50px;
+    font-size: 35px;
+    border-color: blue;
+    border-width: 1px;
 }
+
+.input-card input:focus {
+    background-color: lightcyan;
+}   
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -81,15 +94,38 @@ input::-webkit-inner-spin-button {
 }
 
 .input-card select {
-    width: 305px;
-    height: 40px;
+    width: 550px;
+    height: 55px;
+    margin: 0;
+    font-size: 25px;
+    border-color: blue;
+    border-width: 1px;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
 }
 
 .form-section button[type="submit"] {
-    width: 300px;
-    height: 40px;
+    width: 450px;
+    height: 60px;
+    font-size: 25px;
+    margin: 0 auto;
+    border-color: blue;
+    border-width: 1px;
+    cursor: pointer;
 }
 
-/* END OF HOMEPAGE */
+p.note {
+    font-size: 25px;
+    font-style: italic;
+    text-align: center;
+    padding: 10px;
+}
+
+/* END OF REQUEST A DOCUMENT SCREEN */
 
 /* --- */
