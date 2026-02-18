@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="req-doc.css">
     <link href='https://fonts.googleapis.com/css?family=Lexend Deca' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -14,7 +15,7 @@
             <img src="mhs-logo.png" alt="Makati High School Logo">
         </div>
         <div class="nav-buttons">
-            <a href="index.html"><button>Home</button></a>
+            <a href="index.html"><button><i class="fa-solid fa-house"></i></button></a>
         </div>    
     </div>
     
@@ -23,54 +24,459 @@
     </div>
     
     <div class="form-section">
-        <form action="success.html">
-            <div class="card-left">
-                <div class="input-card">
-                    <label for="name">Name:</label><br>
-                    <input type="text" placeholder="Last Name, First Name, M.I." required>
-                </div>
-            
-                <div class="input-card">
-                    <label for="grsec">Grade & Section:</label><br>
-                    <input type="text" placeholder="Grade Level - Section" required>
-                </div>
-
-                <div class="input-card">
-                    <label for="LRN">LRN:</label><br>
-                    <input type="number" name="" id="" placeholder="Learner Reference Number" required>
-                </div>
-                <!-- what if invalid request if wrong lrn? -->
-            </div>
-
-            <div class="card-right">
-                <div class="input-card">
-                    <label for="doctype">Type of Document:</label><br>
-                    <select name="" id="">
-                        <option value="SF9">SF9</option>
-                        <option value="Form 137">Form 137</option>
-                        <option value="Good Moral">Good Moral</option>
-                    </select>
-                </div>
-
-                <div class="input-card">
-                    <label for="">Purpose of Request:</label><br>
-                    <select name="" id="">
-                        <option value="">Example 1</option>
-                        <option value="">Example 2</option>
-                        <option value="">Example 3</option>
-                    </select>
-                </div>
+        <form action="">
+            <div class="form-columns">
+                <div class="card-left">
+                    <div class="input-card">
+                        <label for="name">Name:</label><br>
+                        <input type="text" id="fullName" list="nameList" placeholder="Last Name, First Name, M.I." required>
+                        <div id="nameSuggestions" class="suggestions"></div>
+                    </div>
                 
-                <div class="input-card">
-                    <div class="submit-container">
-                        <button type="submit">Submit</button>
+                    <div class="input-card">
+                        <label for="grsec">Current / Last School Year</label><br>
+                        <select name="" id="schoolYear" required>
+                            <option value="" disabled selected hidden>Select school year</option>
+                            <option value="2025-2026">2025-2026</option>
+                            <option value="2024-2025">2024-2025</option>
+                            <option value="2023-2024">2023-2024</option>
+                            <option value="2022-2023">2022-2023</option>
+                            <option value="2021-2022">2021-2022</option>
+                        </select>
+                    </div>
+
+                    <div class="input-card">
+                        <label for="LRN">Track / Strand</label><br>
+                        <select name="" id="track" required>
+                            <option value="" disabled selected hidden>Select track / strand</option>
+                            <option value="STEM (Science, Technology, Engineering, and Mathematics)">STEM</option>
+                            <option value="HUMSS (Humanities and Social Sciences)">HUMSS</option>
+                            <option value="ABM (Accountancy, Business, and Management)">ABM</option>
+                            <option value="HE (Home Economics)">HE</option>
+                            <option value="ICT (Information and Communications Technology)">ICT</option>
+                            <option value="A&D (Arts & Design)">A&D</option>
+                            <option value="Electrical">ELEC</option>
+                            <option value="SMAW (Shielded Metal Arc Welding)">SMAW</option>
+                            <option value="Not Applicable (JHS)">Not Applicable (JHS)</option>
+                        </select>
                     </div>
                 </div>
+
+                <div class="card-right">
+
+                    <div class="input-card">
+                        <label for="">Purpose of Request:</label><br>
+                        <select name="" id="purpose" required>
+                            <option value="" disabled hidden selected>Select purpose of request</option>
+                            <option value="School Requirements">School Requirements</option>
+                            <option value="CAV">CAV</option>
+                            <option value="Employment">Employment</option>
+                            <option value="Birth Certificate Application">Birth Certificate Application</option>
+                            <option value="Foreign Studies">Foreign Studies</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-card">
+                        <label for="doctype">Type of Document:</label><br>
+                        <select name="" id="document" required>
+                            <option value="" disabled selected hidden>Select document type</option>
+                        </select>
+                    </div>
+
+                    <div class="input-card">
+                        <label for="email">Email (Contact):</label><br>
+                        <input type="email" id="contact" placeholder="email@example.com" >
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit">Submit</button>
             </div>
         </form>
+    </div>    
+
+    <p class="note">
+        3-5 working days upon request. <br>
+        Depending on the availability of the signatories.
+    </p>
+
+    <div id="confirmModal" class="modal">
+        <div class="modal-box">
+            <p>
+            Please make sure all details are correct.<br>
+            Incomplete or incorrect information may delay your request.
+            </p>
+
+            <p id="documentNote" class="doc-note"></p>
+
+            <div class="modal-actions">
+                <button id="cancelBtn"><i class="fa-solid fa-xmark"></i>Cancel</button>
+                <button id="confirmBtn"><i class="fa-solid fa-check"></i>Confirm</button>
+            </div>
+        </div>
     </div>
 
-    <p class="note">Processing time may vary depending on volume.</p>
+    <!-- Already Requested Modal -->
+    <div id="existsModal" class="modal">
+        <div class="modal-box">
+            <p>
+                This request has already been submitted. 
+            </p>
+            <p>
+                Please check your reference code or wait for the previous request to be processed.
+            </p>
+            <div class="modal-actions">
+                <button id="existsOkBtn"><i class="fa-solid fa-check"></i>OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Request Submitted</h3>
+                <p>Your request has been successfully received.</p>
+                
+                <div class="check-container">
+                    <img src="check-icon.png" alt="Check Icon" srcset="">
+                </div>
+
+                <div class="note-container">
+            </div>
+            <div class="refCode-container">
+                <p>Please save your reference code for tracking:</p>
+                <h2 id="refCode">YY-MMDD-###</h2>
+            </div>
+                
+            <p class="note"><!-- You may print your receipt or --> Click Done to return to the homepage.</p>
+
+            <div class="modal-actions">
+                <!-- 
+                <button id="printBtn"><i class="fa-solid fa-print"></i>Print</button> 
+                --> 
+                <button id="doneBtn"><i class="fa-solid fa-check"></i>Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+    <div id="idleModal" class="modal">
+        <div class="modal-box">
+            <p>Are you still there? No activity detected.</p>
+            <div class="modal-actions">
+                <button id="idleYesBtn">Yes</button>
+                <button id="idleNoBtn">No</button>
+            </div>
+        </div>
+    </div>
+    -->
+
     
+<script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwoM8A47GcUIftxLm_MHNs5-OlpDPikLWteYWrhibNhvTW_Tv8Iadf72VCwMimmIzUIUQ/exec";
+
+    const form = document.querySelector("form");
+    const confirmModal = document.getElementById("confirmModal");
+    const successModal = document.getElementById("successModal");
+    const existsModal = document.getElementById("existsModal");
+
+    const confirmBtn = document.getElementById("confirmBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const doneBtn = document.getElementById("doneBtn");
+    const existsOkBtn = document.getElementById("existsOkBtn");
+
+    const documentNote = document.getElementById("documentNote");
+
+    /* =========================
+    FORM SUBMIT → OPEN CONFIRM MODAL
+    ========================= */
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        confirmModal.style.display = "flex";
+    });
+
+    /* =========================
+    CONFIRM → SEND TO APPS SCRIPT (ONE POST ONLY)
+    ========================= */
+    confirmBtn.addEventListener("click", function () {
+
+        const referenceCode = generateReferenceCode();
+
+        const data = {
+            name: document.getElementById("fullName").value.trim(),
+            schoolYear: document.getElementById("schoolYear").value,
+            track: document.getElementById("track").value,
+            documentType: document.getElementById("document").value,
+            purpose: document.getElementById("purpose").value,
+            email: document.getElementById("contact").value.trim(),
+            referenceCode: referenceCode
+        };
+
+        confirmModal.style.display = "none";
+        document.body.style.cursor = "progress";
+
+        fetch(WEB_APP_URL, {
+            method: "POST",
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(response => {
+
+            document.body.style.cursor = "default";
+
+            if (response.duplicate) {
+                existsModal.style.display = "flex";
+                return;
+            }
+
+            if (response.success) {
+                showSuccessModal(referenceCode);
+            }
+
+        })
+    });
+
+    /* =========================
+    MODAL CONTROLS
+    ========================= */
+    cancelBtn.addEventListener("click", function () {
+        confirmModal.style.display = "none";
+    });
+
+    existsOkBtn.addEventListener("click", function () {
+        existsModal.style.display = "none";
+    });
+
+    doneBtn.addEventListener("click", function () {
+        successModal.style.cursor = "progress";
+        form.reset();
+
+        setTimeout(function() {
+            window.location.href = "index.html";
+        }, 1000);
+    });
+
+    /* =========================
+    PREVENT ACCIDENTAL NAVIGATION
+    ========================= */
+    const confirmMessage = confirmModal.querySelector("p");
+    const originalConfirmText = confirmMessage.innerHTML;
+    const homeBtn = document.querySelector(".nav-buttons a");
+
+    homeBtn.addEventListener("click", function (e) {
+
+        const hasInput = Array.from(form.elements).some(el => {
+            if (el.type === "submit" || el.type === "button") return false;
+            return el.value && el.value.trim() !== "";
+        });
+
+        if (hasInput) {
+            e.preventDefault();
+
+            confirmModal.style.display = "flex";
+            confirmMessage.textContent =
+                "You have unsaved inputs. Are you sure you want to leave?";
+
+            documentNote.style.display = "none";
+
+            confirmBtn.onclick = function () {
+                window.location.href = homeBtn.href;
+            };
+
+            cancelBtn.onclick = function () {
+                confirmModal.style.display = "none";
+                confirmMessage.innerHTML = originalConfirmText;
+                documentNote.style.display = "";
+                confirmBtn.onclick = null;
+            };
+
+        } else {
+            document.body.style.cursor = "progress";
+            setTimeout(() => {
+                window.location.href = homeBtn.href;
+            }, 800);
+        }
+    });
+
+
+    /* =========================
+    REFERENCE CODE GENERATOR
+    ========================= */
+    function generateReferenceCode() {
+        const now = new Date();
+
+        const yearPart = String(now.getFullYear()).slice(-2);
+        const monthDayPart =
+            String(now.getMonth() + 1).padStart(2, "0") +
+            String(now.getDate()).padStart(2, "0");
+
+        const randomPart = String(Math.floor(Math.random() * 900)).padStart(3, "0");
+
+        return `${yearPart}-${monthDayPart}-${randomPart}`;
+    }
+
+    /* =========================
+    SUCCESS MODAL
+    ========================= */
+    function showSuccessModal(code) {
+        document.getElementById("refCode").textContent = code;
+        successModal.style.display = "flex";
+    }
+
+    /* =========================
+    NAME SUGGESTIONS
+    ========================= */
+    const fullNameInput = document.getElementById("fullName");
+    const suggestionsDiv = document.getElementById("nameSuggestions");
+
+    const names = [
+        "Borromeo, Jarred Lance R.", 
+        "Roy, Danielle Lee Anne R.", 
+        "Ancheta, Jelian Dennise B.", 
+        "Mondred, Ma. Flordeluna S.",
+        "Morondoz, Alyssa Darlene D."
+    ];
+
+    fullNameInput.addEventListener("input", function() {
+        const val = this.value.toLowerCase();
+        suggestionsDiv.innerHTML = "";
+
+        if (!val) return;
+
+        const matches = names.filter(n => n.toLowerCase().startsWith(val));
+
+        matches.forEach(m => {
+            const div = document.createElement("div");
+            div.textContent = m;
+            div.classList.add("suggestion-item");
+            div.addEventListener("click", () => {
+                fullNameInput.value = m;
+                suggestionsDiv.innerHTML = "";
+            });
+            suggestionsDiv.appendChild(div);
+        });
+    });
+
+    fullNameInput.addEventListener("blur", () => {
+        setTimeout(() => suggestionsDiv.innerHTML = "", 150);
+    });
+
+
+    /* =========================
+    PURPOSE → DOCUMENT LOGIC
+    ========================= */
+    const purposeMap = {
+        "School Requirements": {
+            documents: [
+                "SF-10 (Permanent Record)",
+                "SF-9 (Report Card)",
+                "Certificate of Grades",
+                "Certificate of Completion",
+                "Certificate of Graduation",
+                "Proof of Enrollment",
+                "Request Form for SF-10",
+                "Diploma"
+            ],
+            note: `
+            <strong>Note:</strong><br>
+            • If SF-10, school-to-school only.<br>
+            • Not released directly to students.<br>
+            • Sent via courier (e.g., LBC).
+            `
+        },
+        CAV: {
+            documents: [
+                "CAV",
+                "Diploma (for CAV)",
+                "Certificate of Grades (for CAV)",
+                "Reconstructed Diploma"
+            ],
+            note: `
+            <strong>Extra Requirements:</strong><br>
+            • Original Diploma + 2 photocopies<br>
+            • Accomplished Request Form (Records Office)
+            `
+        },
+        Employment: {
+            documents: [
+                "Certificate of Grades",
+                "Certificate of Graduation",
+                "Certificate of Completion",
+                "Diploma",
+                "English as Medium of Instruction"
+            ],
+            note: `
+            <strong>Extra Requirements:</strong><br>
+            • Letter of Request<br>
+            • Printed / photocopied requirements
+            `
+        },
+        "Birth Certificate Application": {
+            documents: [
+                "Certificate of Enrollment / School Record",
+                "Certificate of Completion",
+                "Certificate of Graduation"
+            ],
+            note: `
+            <strong>Note:</strong><br>
+            • For supporting school records only.<br>
+            • Not a PSA-issued document.
+            `
+        },
+        "Foreign Studies": {
+            documents: [
+                "Certificate of Grades",
+                "Diploma",
+                "Certificate of Graduation",
+                "English as Medium of Instruction",
+                "SF-10"
+            ],
+            note: `
+            <strong>Extra Requirements:</strong><br>
+            • Personal Request Letter<br>
+            • Request Letter from Foreign School<br>
+            • Agency Letter (if applicable)<br>
+            • SPA if requester is abroad
+            `
+        }
+    };
+
+    const purposeSelect = document.getElementById("purpose");
+    const documentSelect = document.getElementById("document");
+
+    purposeSelect.addEventListener("change", function () {
+
+        const selectedPurpose = this.value;
+
+        documentSelect.innerHTML =
+            `<option value="" disabled selected hidden>Select document type</option>`;
+        documentSelect.disabled = true;
+        documentNote.innerHTML = "";
+
+        const data = purposeMap[selectedPurpose];
+        if (!data) return;
+
+        data.documents.forEach(doc => {
+            const option = document.createElement("option");
+            option.value = doc;
+            option.textContent = doc;
+            documentSelect.appendChild(option);
+        });
+
+        documentSelect.disabled = false;
+        documentNote.innerHTML = data.note;
+    });
+</script>
+
+
 </body>
 </html>
